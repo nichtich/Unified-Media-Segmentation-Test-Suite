@@ -26,6 +26,13 @@
             video.load();
         }
 
+        function updateAudioRow(rowId, baseUrl, suffix) {
+            let row = document.getElementById(rowId);
+            let audio = row.children[2].children[0];
+            audio.children[0].src = baseUrl + suffix;
+            audio.load();
+        }
+
         function updateImageTable(baseUrl) {
             updateImageRow('image_base', baseUrl, '');
             updateImageRow('rect_absolute', baseUrl, '/segment/rect/165,340,35,315');
@@ -49,6 +56,12 @@
             updateVideoRow('video_mesh', baseUrl, '/segment/mesh/v 0 0 0,v 0 100 0,v 100 0 0,v 100 100 0,v 150 100 2000,v 150 200 2000,v 300 100 2000,v 300 200 2000,f 1 5 6,f 1 5 7,f 1 6 2,f 1 7 3,f 2 6 8,f 2 8 4,f 3 1 2,f 3 2 4,f 5 7 8,f 5 8 6,f 7 3 4,f 7 4 8');
         }
 
+        function updateAudioTable(baseUrl) {
+            updateAudioRow('audio_base', baseUrl, '');
+            updateAudioRow('audio_time', baseUrl, '/segment/time/0.2-0.5');
+            updateAudioRow('audio_frequency', baseUrl, '/segment/frequency/1000-4000');
+        }
+
     </script>
 </head>
 
@@ -63,7 +76,11 @@
     <label for="video_base_input">Base URL for Video</label>
     <input type="text" name="video" id="video_base_input", value="http://localhost:8080/v59MSU-aPeGtqU3tyvCwJiHNW7c0BEAiENqAErvxgCmE">
     <button type="button" onclick="updateVideoTable(document.getElementById('video_base_input').value)">Set Video URL</button>
-
+</form>
+<form>
+    <label for="audio_base_input">Base URL for Audio</label>
+    <input type="text" name="audio" id="audio_base_input", value="http://localhost:8080/abqXlssqlKdlxl9ukNUYAiLwdAMm72CKxP9NdCImEpkA">
+    <button type="button" onclick="updateAudioTable(document.getElementById('audio_base_input').value)">Set Audio URL</button>
 </form>
 
 <h2>Image Segments</h2>
@@ -412,6 +429,62 @@
 
 
 
+
+</table>
+
+<h2>Audio Segmments</h2>
+
+<table>
+    <tr><th>Path</th>
+        <th>Target</th>
+        <th>Result</th>
+    </tr>
+
+    <tr id="audio_base">
+        <td> </td>
+        <td>
+            <audio controls>
+                <source src="assets/audio_base.mp3">
+            </audio>
+        </td>
+        <td>
+            <audio controls>
+                <source src="">
+            </audio>
+        </td>
+    </tr>
+
+    <tr id="audio_time">
+        <td>
+            /segment/time/0.2-0.5
+        </td>
+        <td>
+            <audio controls>
+                <source src="assets/audio_time.webm">
+            </audio>
+        </td>
+        <td>
+            <audio controls>
+                <source src="">
+            </audio>
+        </td>
+    </tr>
+
+    <tr id="audio_frequency">
+        <td>
+            /segment/frequency/1000-4000
+        </td>
+        <td>
+            <audio controls>
+                <source src="assets/audio_frequency.webm">
+            </audio>
+        </td>
+        <td>
+            <audio controls>
+                <source src="">
+            </audio>
+        </td>
+    </tr>
 
 </table>
 
