@@ -19,8 +19,15 @@
             row.children[3].children[0].style.background = "url('" + row.children[1].children[0].src + "'), url('" + baseUrl + suffix + "')";
         }
 
+        function updateVideoRow(rowId, baseUrl, suffix) {
+            let row = document.getElementById(rowId);
+            let video = row.children[2].children[0];
+            video.children[0].src = baseUrl + suffix;
+            video.load();
+        }
+
         function updateImageTable(baseUrl) {
-            updateImageRow('base', baseUrl, '', 'base_image.png');
+            updateImageRow('image_base', baseUrl, '');
             updateImageRow('rect_absolute', baseUrl, '/segment/rect/165,340,35,315');
             updateImageRow('rect_relative', baseUrl, '/segment/rect/0.236,0.486,0.088,0.785');
             updateImageRow('poly_absolute', baseUrl, '/segment/polygon/(170,35),(165,180),(225,320),(340,275),(335,65),(300,35)');
@@ -32,7 +39,14 @@
             updateImageRow('mask', baseUrl, '/segment/mask/iVBORw0KGgoAAAANSUhEUgAAArwAAAGQAQMAAAB28iHQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURQAAAP___6XZn90AAAAJcEhZcwAACxMAAAsTAQCanBgAAAOySURBVHja7d1BjpswGAVgPB6Nd_UFKvkovlnNzcqu18gRsmSB4kImEIitqlLfS2Hy3qZdfZqa5z-GlrRRFEVRFEVRFEVRFEVRFEVRFEVRFEVRlP-VHyw45RMLHlhw5sAx544Ch0xaC59Ja-EyaS0mmFI4M8JnBjz1rWfBnFqMRb5QYGrfWgZsDwcb1tZraHBiwZE0LKYic2DLmkKGBY9XjwRHFhxIA3msBenM4j7h73DYXie9wU9lc4UDYZtcP0IYp8OUP6cnHI7jeLOMg8tU5OkzdcDDwzQ88Wvh8mVaYvzAH5fBXWH0Iod8C3oYpRlGD6PZRdfCLDD4dGg_l8HC--avcDutNfasFebl9eAix7nCFgynZdMlLHzfzQEKm_tudkj31jbC0cJRdnMz15gAJxZMmT_NfO0IsGfBgQUnFpxJsGHBlgV7FhxYcGTBiXRWaVinq7kU8POgY8HLQRN9NE4sOLOWggUvpUDXzbPgpRTonRcXGDwrFhd8l3C_-wDfJbgVDL1L8CsYuvXCCobukLiCoUXOJHhdCugOsWsYWeR126BF3sLAIocNDCxy3MDAIqdM6lsmwWYL44pst_DAgnE7ZFtj4A55hGE7xLPg8AB3u4fjA3zaPZwe4DMLhu3p_CwYNSzMI4waFvYRRg0L9zwYNCx8AXc7h8PzYNCwiIeDUwGfdw4XLmq8lfCwb9iU8GXfcDmOQXPTVeBu17D_EjBkCoUKfGbB_WvCsQIPrwknwXQ4CxYsWLDg3cK9YDp8Phx8YsGQe5DagaVlwQi3dozFPK8IpFLU7vMwsGMtBQ2uPK_Y-aObWpF3Dld2SHs4uGPBmOe8lYuH2dP5iXAv-BhwZbph5iYNrj2YvhwOhgxkJ1jw38EtC-4EQ-EzC-4SCW5JZyzHOrx9NKSleG9IF6_6aQo5IFsW7A4H1_7StNk1HL4CjLmZjoLpcHoiPAh-dZj2OJYGexZc-czDPLqxgv8Ag_7hJg0ut153OLg9HIxxK604HHxhwaiXFeLT4J4Fo15hSSy4uHig4WZZcHkvjXpjypDgt2KRQcMtnFhwscYYt3J2Y8Go4ZZYcLESAwvu9w4X52PQcHsrhhBquPVzLX7dfkW9Z5rmIhss_BF-jn96P7XstrkbEOymLWHy7csPsS8UXqaN3d4G8wCEJ2vqArTG62-tTsC2XX_ibg2j2uZXP2ECLnHj2y0Me5P3W7OFYe8ev69-HzPpG4VpMO0rkB3rfxRQFEVRFEVRFOUf0zS_ARxLyKmUYYR5AAAAAElFTkSuQmCC');
             updateImageRow('color', baseUrl, '/segment/color/red,blue');
             updateImageRow('rect_overlap', baseUrl, '/segment/rect/100,340,35,360/segment/rect/65,400,-25,280');
+        }
 
+        function updateVideoTable(baseUrl) {
+            updateVideoRow('video_base', baseUrl, '');
+            updateVideoRow('video_time_relative', baseUrl, '/segment/time/0.2-0.5');
+            updateVideoRow('video_time_absolute', baseUrl, '/segment/time/2000-5000');
+            updateVideoRow('video_rotoscope', baseUrl, '/segment/rotoscope/0,rect,0,200,0,200;3000,rect,300,600,100,400');
+            updateVideoRow('video_mesh', baseUrl, '/segment/mesh/v 0 0 0,v 0 100 0,v 100 0 0,v 100 100 0,v 150 100 2000,v 150 200 2000,v 300 100 2000,v 300 200 2000,f 1 5 6,f 1 5 7,f 1 6 2,f 1 7 3,f 2 6 8,f 2 8 4,f 3 1 2,f 3 2 4,f 5 7 8,f 5 8 6,f 7 3 4,f 7 4 8');
         }
 
     </script>
@@ -45,6 +59,14 @@
     <input type="text" name="image_base" id="image_base_input" value="http://localhost:8080/iAADA_v___vx8QKHRXKaf4nIrkrqKI8N5KxFlt_74uI5gjQ4zsy13ig">
     <button type="button" onclick="updateImageTable(document.getElementById('image_base_input').value)">Set Image URL</button>
 </form>
+<form>
+    <label for="video_base_input">Base URL for Video</label>
+    <input type="text" name="video" id="video_base_input", value="http://localhost:8080/v59MSU-aPeGtqU3tyvCwJiHNW7c0BEAiENqAErvxgCmE">
+    <button type="button" onclick="updateVideoTable(document.getElementById('video_base_input').value)">Set Video URL</button>
+
+</form>
+
+<h2>Image Segments</h2>
 
 <table>
     <tr><th>Path</th>
@@ -53,7 +75,7 @@
         <th>Difference</th>
     </tr>
 
-    <tr id="base">
+    <tr id="image_base">
         <td>
 
         </td>
@@ -301,5 +323,98 @@
 
 </table>
 
+
+<h2>Video Segments</h2>
+
+<table>
+    <tr><th>Path</th>
+        <th>Target</th>
+        <th>Result</th>
+    </tr>
+
+    <tr id="video_base">
+        <td> </td>
+        <td>
+            <video controls>
+                <source src="assets/video_base.mp4" type="video/mp4">
+            </video>
+        </td>
+        <td>
+            <video controls>
+                <source src="">
+            </video>
+        </td>
+    </tr>
+
+    <tr id="video_time_relative">
+        <td>
+            /segment/time/0.2-0.5
+        </td>
+        <td>
+            <video controls>
+                <source src="assets/video_time.mp4" type="video/mp4">
+            </video>
+        </td>
+        <td>
+            <video controls>
+                <source src="">
+            </video>
+        </td>
+    </tr>
+
+    <tr id="video_time_absolute">
+        <td>
+            /segment/time/2000-5000
+        </td>
+        <td>
+            <video controls>
+                <source src="assets/video_time.mp4" type="video/mp4">
+            </video>
+        </td>
+        <td>
+            <video controls>
+                <source src="">
+            </video>
+        </td>
+    </tr>
+
+    <tr id="video_rotoscope">
+        <td>
+            /segment/rotoscope/0,rect,0,200,0,200;3000,rect,300,600,100,400
+        </td>
+        <td>
+            <video controls>
+                <source src="assets/video_rotoscope.webm" type="video/webm">
+            </video>
+        </td>
+        <td>
+            <video controls>
+                <source src="" type="video/webm">
+            </video>
+        </td>
+    </tr>
+
+    <tr id="video_mesh">
+        <td>
+            /segment/mesh/v 0 0 0,v 0 100 0,v 100 0 0,v 100 100 0,v 150 100 2000,v 150 200 2000,v 300 100 2000,v 300 200 2000,f 1 5 6,f 1 5 7,f 1 6 2,f 1 7 3,f 2 6 8,f 2 8 4,f 3 1 2,f 3 2 4,f 5 7 8,f 5 8 6,f 7 3 4,f 7 4 8
+        </td>
+        <td>
+            <video controls>
+                <source src="assets/video_mesh.webm" type="video/webm">
+            </video>
+        </td>
+        <td>
+            <video controls>
+                <source src="" type="video/webm">
+            </video>
+        </td>
+    </tr>
+
+
+
+
+</table>
+
+</table>
 </body>
 </html>
