@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="simple.css">
     <style>
         div {
             background-blend-mode: difference;
@@ -66,428 +67,420 @@
 </head>
 
 <body>
+<header>
+    <form>
+        <label for="image_base_input">Base URL for <a href="assets/image_base.png" target="_blank">Image</a></label>
+        <input type="text" name="image_base" id="image_base_input"
+               value="http://localhost:8080/iAADA_v___vx8QKHRXKaf4nIrkrqKI8N5KxFlt_74uI5gjQ4zsy13ig">
+        <button type="button" onclick="updateImageTable(document.getElementById('image_base_input').value)">Set Image
+            URL
+        </button>
+    </form>
+    <form>
+        <label for="video_base_input">Base URL for <a href="assets/video_base.mp4" target="_blank">Video</a></label>
+        <input type="text" name="video" id="video_base_input" ,
+               value="http://localhost:8080/v59MSU-aPeGtqU3tyvCwJiHNW7c0BEAiENqAErvxgCmE">
+        <button type="button" onclick="updateVideoTable(document.getElementById('video_base_input').value)">Set Video
+            URL
+        </button>
+    </form>
+    <form>
+        <label for="audio_base_input">Base URL for <a href="assets/audio_base.mp3" target="_blank">Audio</a></label>
+        <input type="text" name="audio" id="audio_base_input" ,
+               value="http://localhost:8080/abqXlssqlKdlxl9ukNUYAiLwdAMm72CKxP9NdCImEpkA">
+        <button type="button" onclick="updateAudioTable(document.getElementById('audio_base_input').value)">Set Audio
+            URL
+        </button>
+    </form>
+</header>
+<main>
+    <h2>Image Segments</h2>
 
-<form>
-    <label for="image_base_input">Base URL for Image</label>
-    <input type="text" name="image_base" id="image_base_input" value="http://localhost:8080/iAADA_v___vx8QKHRXKaf4nIrkrqKI8N5KxFlt_74uI5gjQ4zsy13ig">
-    <button type="button" onclick="updateImageTable(document.getElementById('image_base_input').value)">Set Image URL</button>
-</form>
-<form>
-    <label for="video_base_input">Base URL for Video</label>
-    <input type="text" name="video" id="video_base_input", value="http://localhost:8080/v59MSU-aPeGtqU3tyvCwJiHNW7c0BEAiENqAErvxgCmE">
-    <button type="button" onclick="updateVideoTable(document.getElementById('video_base_input').value)">Set Video URL</button>
-</form>
-<form>
-    <label for="audio_base_input">Base URL for Audio</label>
-    <input type="text" name="audio" id="audio_base_input", value="http://localhost:8080/abqXlssqlKdlxl9ukNUYAiLwdAMm72CKxP9NdCImEpkA">
-    <button type="button" onclick="updateAudioTable(document.getElementById('audio_base_input').value)">Set Audio URL</button>
-</form>
+    <table>
+        <tr>
+            <th style="width: 300px; max-width: 300px;">Path</th>
+            <th style="width: 700px">Target</th>
+            <th style="width: 700px">Result</th>
+            <th>Difference</th>
+        </tr>
 
-<h2>Image Segments</h2>
+        <tr id="image_base">
+            <td>
 
-<table>
-    <tr><th>Path</th>
-        <th>Target</th>
-        <th>Result</th>
-        <th>Difference</th>
-    </tr>
-
-    <tr id="image_base">
-        <td>
-
-        </td>
-        <td>
-            <img src="assets/base_image.png" alt="base image">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+            </td>
+            <td>
+                <img src="assets/image_base.png" alt="base image">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 700px;
             height: 400px;'
-            ></div>
-        </td>
-    </tr>
+                ></div>
+            </td>
+        </tr>
 
-    <!--rect absolute-->
-    <tr id="rect_absolute">
-        <td>
-            segment/rect/165,340,35,315
-        </td>
-        <td>
-            <img src="assets/image_rect_absolute.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+        <!--rect absolute-->
+        <tr id="rect_absolute">
+            <td>
+                segment/rect/165,340,35,315
+            </td>
+            <td>
+                <img src="assets/image_rect_absolute.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 175px;
             height: 280px;'
-            ></div>
-        </td>
-    </tr>
-    <!--rect relative-->
-    <tr id="rect_relative">
-        <td>
-            segment/rect/0.236,0.486,0.088,0.785
-        </td>
-        <td>
-            <img src="assets/image_rect_relative.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--rect relative-->
+        <tr id="rect_relative">
+            <td>
+                segment/rect/0.236,0.486,0.088,0.785
+            </td>
+            <td>
+                <img src="assets/image_rect_relative.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 176px;
             height: 279px;'
-            ></div>
-        </td>
-    </tr>
-    <!--poly abolute-->
-    <tr id="poly_absolute">
-        <td>
-            segment/polygon/(170,35),(165,180),(225,320),(340,275),(335,65),(300,35)
-        </td>
-        <td>
-            <img src="assets/image_poly_absolute.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--poly abolute-->
+        <tr id="poly_absolute">
+            <td>
+                segment/polygon/(170,35),(165,180),(225,320),(340,275),(335,65),(300,35)
+            </td>
+            <td>
+                <img src="assets/image_poly_absolute.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 175px;
             height: 285px;'
-            ></div>
-        </td>
-    </tr>
-    <!--poly relative-->
-    <tr id="poly_relative">
-        <td>
-            segment/polygon/(0.243,0.088),(0.236,0.45),(0.321,0.8),(0.486,0.688),(0.479,0.163),(0.429,0.088)
-        </td>
-        <td>
-            <img src="assets/image_poly_relative.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--poly relative-->
+        <tr id="poly_relative">
+            <td>
+                segment/polygon/(0.243,0.088),(0.236,0.45),(0.321,0.8),(0.486,0.688),(0.479,0.163),(0.429,0.088)
+            </td>
+            <td>
+                <img src="assets/image_poly_relative.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 175px;
             height: 285px;'
-            ></div>
-        </td>
-    </tr>
-    <!--bezier absolute-->
-    <tr id="bezier_absolute">
-        <td>
-            segment/bezier/(190,30),(130,40),(150,300),(225,320),(400,360),(450,-20),(190,30)
-        </td>
-        <td>
-            <img src="assets/image_bezier_absolute.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--bezier absolute-->
+        <tr id="bezier_absolute">
+            <td>
+                segment/bezier/(190,30),(130,40),(150,300),(225,320),(400,360),(450,-20),(190,30)
+            </td>
+            <td>
+                <img src="assets/image_bezier_absolute.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 216px;
             height: 298px;'
-            ></div>
-        </td>
-    </tr>
-    <!--bezier relative-->
-    <tr id="bezier_relative">
-        <td>
-            segment/bezier/(0.271,0.075),(0.186,0.1),(0.214,0.75),(0.321,0.8),(0.571,0.9),(0.643,-0.05),(0.271,0.075)
-        </td>
-        <td>
-            <img src="assets/image_bezier_relative.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--bezier relative-->
+        <tr id="bezier_relative">
+            <td>
+                segment/bezier/(0.271,0.075),(0.186,0.1),(0.214,0.75),(0.321,0.8),(0.571,0.9),(0.643,-0.05),(0.271,0.075)
+            </td>
+            <td>
+                <img src="assets/image_bezier_relative.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 216px;
             height: 298px;'
-            ></div>
-        </td>
-    </tr>
-    <!--svg-->
-    <tr id="svg">
-        <td>
-            segment/path/M 190,30 C 130,40 150,300 225,300 C 400,360 400,-20 190,30 M 410,60 L 470,130 L 480,70 Z
-        </td>
-        <td>
-            <img src="assets/image_svg.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--svg-->
+        <tr id="svg">
+            <td>
+                segment/path/M 190,30 C 130,40 150,300 225,300 C 400,360 400,-20 190,30 M 410,60 L 470,130 L 480,70 Z
+            </td>
+            <td>
+                <img src="assets/image_svg.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 325px;
             height: 281px;'
-            ></div>
-        </td>
-    </tr>
-    <!--cut-->
-    <tr id="cut">
-        <td>
-            segment/cut/y<-0.019x^2+9.6x-900
-        </td>
-        <td>
-            <img src="assets/image_cut.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--cut-->
+        <tr id="cut">
+            <td>
+                segment/cut/y<-0.019x^2+9.6x-900
+            </td>
+            <td>
+                <img src="assets/image_cut.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 256px;
             height: 313px;'
-            ></div>
-        </td>
-    </tr>
+                ></div>
+            </td>
+        </tr>
 
-    <!--mask-->
+        <!--mask-->
 
-    <tr id="mask">
-        <td>
-            segment/mask/iVBORw0KGgoAAAANSUhEUgAAArwAAAGQAQMAAAB28iHQ
-            AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURQAAAP___
-            6XZn90AAAAJcEhZcwAACxMAAAsTAQCanBgAAAOySURBVHja7d1BjpswGA
-            VgPB6Nd_UFKvkovlnNzcqu18gRsmSB4kImEIitqlLfS2Hy3qZdfZqa5z-
-            GlrRRFEVRFEVRFEVRFEVRFEVRFEVRFEVRlP-VHyw45RMLHlhw5sAx544C
-            h0xaC59Ja-EyaS0mmFI4M8JnBjz1rWfBnFqMRb5QYGrfWgZsDwcb1tZra
-            HBiwZE0LKYic2DLmkKGBY9XjwRHFhxIA3msBenM4j7h73DYXie9wU9lc4
-            UDYZtcP0IYp8OUP6cnHI7jeLOMg8tU5OkzdcDDwzQ88Wvh8mVaYvzAH5f
-            BXWH0Iod8C3oYpRlGD6PZRdfCLDD4dGg_l8HC--avcDutNfasFebl9eAi
-            x7nCFgynZdMlLHzfzQEKm_tudkj31jbC0cJRdnMz15gAJxZMmT_NfO0Is
-            GfBgQUnFpxJsGHBlgV7FhxYcGTBiXRWaVinq7kU8POgY8HLQRN9NE4sOL
-            OWggUvpUDXzbPgpRTonRcXGDwrFhd8l3C_-wDfJbgVDL1L8CsYuvXCCob
-            ukLiCoUXOJHhdCugOsWsYWeR126BF3sLAIocNDCxy3MDAIqdM6lsmwWYL
-            44pst_DAgnE7ZFtj4A55hGE7xLPg8AB3u4fjA3zaPZwe4DMLhu3p_CwYN
-            SzMI4waFvYRRg0L9zwYNCx8AXc7h8PzYNCwiIeDUwGfdw4XLmq8lfCwb9
-            iU8GXfcDmOQXPTVeBu17D_EjBkCoUKfGbB_WvCsQIPrwknwXQ4CxYsWLD
-            g3cK9YDp8Phx8YsGQe5DagaVlwQi3dozFPK8IpFLU7vMwsGMtBQ2uPK_Y
-            -aObWpF3Dld2SHs4uGPBmOe8lYuH2dP5iXAv-BhwZbph5iYNrj2YvhwOh
-            gxkJ1jw38EtC-4EQ-EzC-4SCW5JZyzHOrx9NKSleG9IF6_6aQo5IFsW7A
-            4H1_7StNk1HL4CjLmZjoLpcHoiPAh-dZj2OJYGexZc-czDPLqxgv8Ag_7
-            hJg0ut153OLg9HIxxK604HHxhwaiXFeLT4J4Fo15hSSy4uHig4WZZcHkv
-            jXpjypDgt2KRQcMtnFhwscYYt3J2Y8Go4ZZYcLESAwvu9w4X52PQcHsrh
-            hBquPVzLX7dfkW9Z5rmIhss_BF-jn96P7XstrkbEOymLWHy7csPsS8UXq
-            aN3d4G8wCEJ2vqArTG62-tTsC2XX_ibg2j2uZXP2ECLnHj2y0Me5P3W7O
-            FYe8ev69-HzPpG4VpMO0rkB3rfxRQFEVRFEVRFOUf0zS_ARxLyKmUYYR5
-            AAAAAElFTkSuQmCC
-        </td>
-        <td>
-            <img src="assets/image_masked.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+        <tr id="mask">
+            <td>
+                <div style="max-width: 300px; overflow: scroll">
+                segment/mask/iVBORw0KGgoAAAANSUhEUgAAArwAAAGQAQMAAAB28iHQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURQAAAP___6XZn90AAAAJcEhZcwAACxMAAAsTAQCanBgAAAOySURBVHja7d1BjpswGAVgPB6Nd_UFKvkovlnNzcqu18gRsmSB4kImEIitqlLfS2Hy3qZdfZqa5z-GlrRRFEVRFEVRFEVRFEVRFEVRFEVRFEVRlP-VHyw45RMLHlhw5sAx544Ch0xaC59Ja-EyaS0mmFI4M8JnBjz1rWfBnFqMRb5QYGrfWgZsDwcb1tZraHBiwZE0LKYic2DLmkKGBY9XjwRHFhxIA3msBenM4j7h73DYXie9wU9lc4UDYZtcP0IYp8OUP6cnHI7jeLOMg8tU5OkzdcDDwzQ88Wvh8mVaYvzAH5fBXWH0Iod8C3oYpRlGD6PZRdfCLDD4dGg_l8HC--avcDutNfasFebl9eAix7nCFgynZdMlLHzfzQEKm_tudkj31jbC0cJRdnMz15gAJxZMmT_NfO0IsGfBgQUnFpxJsGHBlgV7FhxYcGTBiXRWaVinq7kU8POgY8HLQRN9NE4sOLOWggUvpUDXzbPgpRTonRcXGDwrFhd8l3C_-wDfJbgVDL1L8CsYuvXCCobukLiCoUXOJHhdCugOsWsYWeR126BF3sLAIocNDCxy3MDAIqdM6lsmwWYL44pst_DAgnE7ZFtj4A55hGE7xLPg8AB3u4fjA3zaPZwe4DMLhu3p_CwYNSzMI4waFvYRRg0L9zwYNCx8AXc7h8PzYNCwiIeDUwGfdw4XLmq8lfCwb9iU8GXfcDmOQXPTVeBu17D_EjBkCoUKfGbB_WvCsQIPrwknwXQ4CxYsWLDg3cK9YDp8Phx8YsGQe5DagaVlwQi3dozFPK8IpFLU7vMwsGMtBQ2uPK_Y-aObWpF3Dld2SHs4uGPBmOe8lYuH2dP5iXAv-BhwZbph5iYNrj2YvhwOhgxkJ1jw38EtC-4EQ-EzC-4SCW5JZyzHOrx9NKSleG9IF6_6aQo5IFsW7A4H1_7StNk1HL4CjLmZjoLpcHoiPAh-dZj2OJYGexZc-czDPLqxgv8Ag_7hJg0ut153OLg9HIxxK604HHxhwaiXFeLT4J4Fo15hSSy4uHig4WZZcHkvjXpjypDgt2KRQcMtnFhwscYYt3J2Y8Go4ZZYcLESAwvu9w4X52PQcHsrhhBquPVzLX7dfkW9Z5rmIhss_BF-jn96P7XstrkbEOymLWHy7csPsS8UXqaN3d4G8wCEJ2vqArTG62-tTsC2XX_ibg2j2uZXP2ECLnHj2y0Me5P3W7O FYe8ev69-HzPpG4VpMO0rkB3rfxRQFEVRFEVRFOUf0zS_ARxLyKmUYYR5AAAAAElFTkSuQmCC
+                </div>
+            </td>
+            <td>
+                <img src="assets/image_masked.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 170px;
             height: 279px;'
-            ></div>
-        </td>
-    </tr>
-    <!--    hilbert-->
-    <!--    ???-->
-    <!--    color-->
-    <tr id="color">
-        <td>
-            segment/color/red,blue
-        </td>
-        <td>
-            <img src="assets/image_color.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+                ></div>
+            </td>
+        </tr>
+        <!--    hilbert-->
+        <!--    ???-->
+        <!--    color-->
+        <tr id="color">
+            <td>
+                segment/color/red,blue
+            </td>
+            <td>
+                <img src="assets/image_color.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 700px;
             height: 400px;'
-            ></div>
-        </td>
-    </tr>
+                ></div>
+            </td>
+        </tr>
 
-    <tr id="rect_overlap">
-        <td>
-            segment/rect/100,340,35,360/segment/rect/65,400,-25,280
-        </td>
-        <td>
-            <img src="assets/image_rect_overlap.png">
-        </td>
-        <td>
-            <img src="">
-        </td>
-        <td>
-            <div style='
+        <tr id="rect_overlap">
+            <td>
+                segment/rect/100,340,35,360/segment/rect/65,400,-25,280
+            </td>
+            <td>
+                <img src="assets/image_rect_overlap.png">
+            </td>
+            <td>
+                <img src="">
+            </td>
+            <td>
+                <div style='
             width: 175px;
             height: 280px;'
-            ></div>
-        </td>
-    </tr>
+                ></div>
+            </td>
+        </tr>
 
-</table>
-
-
-<h2>Video Segments</h2>
-
-<table>
-    <tr><th>Path</th>
-        <th>Target</th>
-        <th>Result</th>
-    </tr>
-
-    <tr id="video_base">
-        <td> </td>
-        <td>
-            <video controls>
-                <source src="assets/video_base.mp4" type="video/mp4">
-            </video>
-        </td>
-        <td>
-            <video controls>
-                <source src="">
-            </video>
-        </td>
-    </tr>
-
-    <tr id="video_time_relative">
-        <td>
-            /segment/time/0.2-0.5
-        </td>
-        <td>
-            <video controls>
-                <source src="assets/video_time.mp4" type="video/mp4">
-            </video>
-        </td>
-        <td>
-            <video controls>
-                <source src="">
-            </video>
-        </td>
-    </tr>
-
-    <tr id="video_time_absolute">
-        <td>
-            /segment/time/2000-5000
-        </td>
-        <td>
-            <video controls>
-                <source src="assets/video_time.mp4" type="video/mp4">
-            </video>
-        </td>
-        <td>
-            <video controls>
-                <source src="">
-            </video>
-        </td>
-    </tr>
-
-    <tr id="video_rotoscope">
-        <td>
-            /segment/rotoscope/0,rect,0,200,0,200;3000,rect,300,600,100,400
-        </td>
-        <td>
-            <video controls>
-                <source src="assets/video_rotoscope.webm" type="video/webm">
-            </video>
-        </td>
-        <td>
-            <video controls>
-                <source src="" type="video/webm">
-            </video>
-        </td>
-    </tr>
-
-    <tr id="video_mesh">
-        <td>
-            /segment/mesh/v 0 0 0,v 0 100 0,v 100 0 0,v 100 100 0,v 150 100 2000,v 150 200 2000,v 300 100 2000,v 300 200 2000,f 1 5 6,f 1 5 7,f 1 6 2,f 1 7 3,f 2 6 8,f 2 8 4,f 3 1 2,f 3 2 4,f 5 7 8,f 5 8 6,f 7 3 4,f 7 4 8
-        </td>
-        <td>
-            <video controls>
-                <source src="assets/video_mesh.webm" type="video/webm">
-            </video>
-        </td>
-        <td>
-            <video controls>
-                <source src="" type="video/webm">
-            </video>
-        </td>
-    </tr>
+    </table>
 
 
+    <h2>Video Segments</h2>
+
+    <table>
+        <tr>
+            <th style="width: 300px; max-width: 300px;">Path</th>
+            <th style="width: 700px">Target</th>
+            <th style="width: 700px">Result</th>
+        </tr>
+
+        <tr id="video_base">
+            <td></td>
+            <td>
+                <video controls>
+                    <source src="assets/video_base.mp4" type="video/mp4">
+                </video>
+            </td>
+            <td>
+                <video controls>
+                    <source src="">
+                </video>
+            </td>
+        </tr>
+
+        <tr id="video_time_relative">
+            <td>
+                /segment/time/0.2-0.5
+            </td>
+            <td>
+                <video controls>
+                    <source src="assets/video_time.mp4" type="video/mp4">
+                </video>
+            </td>
+            <td>
+                <video controls>
+                    <source src="">
+                </video>
+            </td>
+        </tr>
+
+        <tr id="video_time_absolute">
+            <td>
+                /segment/time/2000-5000
+            </td>
+            <td>
+                <video controls>
+                    <source src="assets/video_time.mp4" type="video/mp4">
+                </video>
+            </td>
+            <td>
+                <video controls>
+                    <source src="">
+                </video>
+            </td>
+        </tr>
+
+        <tr id="video_rotoscope">
+            <td>
+                /segment/rotoscope/0,rect,0,200,0,200;3000,rect,300,600,100,400
+            </td>
+            <td>
+                <video controls>
+                    <source src="assets/video_rotoscope.webm" type="video/webm">
+                </video>
+            </td>
+            <td>
+                <video controls>
+                    <source src="" type="video/webm">
+                </video>
+            </td>
+        </tr>
+
+        <tr id="video_mesh">
+            <td>
+                <div style="max-width: 100%; overflow: scroll">
+                /segment/mesh/v 0 0 0,v 0 100 0,v 100 0 0,v 100 100 0,v 150 100 2000,v 150 200 2000,v 300 100 2000,v 300 200 2000,f 1 5 6,f 1 5 7,f 1 6 2,f 1 7 3,f 2 6 8,f 2 8 4,f 3 1 2,f 3 2 4,f 5 7 8,f 5 8 6,f 7 3 4,f 7 4 8
+                </div>
+            </td>
+            <td>
+                <video controls>
+                    <source src="assets/video_mesh.webm" type="video/webm">
+                </video>
+            </td>
+            <td>
+                <video controls>
+                    <source src="" type="video/webm">
+                </video>
+            </td>
+        </tr>
 
 
-</table>
+    </table>
 
-<h2>Audio Segmments</h2>
+    <h2>Audio Segmments</h2>
 
-<table>
-    <tr><th>Path</th>
-        <th>Target</th>
-        <th>Result</th>
-    </tr>
+    <table>
+        <tr>
+            <th>Path</th>
+            <th>Target</th>
+            <th>Result</th>
+        </tr>
 
-    <tr id="audio_base">
-        <td> </td>
-        <td>
-            <audio controls>
-                <source src="assets/audio_base.mp3">
-            </audio>
-        </td>
-        <td>
-            <audio controls>
-                <source src="">
-            </audio>
-        </td>
-    </tr>
+        <tr id="audio_base">
+            <td></td>
+            <td>
+                <audio controls>
+                    <source src="assets/audio_base.mp3">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="">
+                </audio>
+            </td>
+        </tr>
 
-    <tr id="audio_time">
-        <td>
-            /segment/time/0.2-0.5
-        </td>
-        <td>
-            <audio controls>
-                <source src="assets/audio_time.webm">
-            </audio>
-        </td>
-        <td>
-            <audio controls>
-                <source src="">
-            </audio>
-        </td>
-    </tr>
+        <tr id="audio_time">
+            <td>
+                /segment/time/0.2-0.5
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/audio_time.webm">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="">
+                </audio>
+            </td>
+        </tr>
 
-    <tr id="audio_frequency">
-        <td>
-            /segment/frequency/1000-4000
-        </td>
-        <td>
-            <audio controls>
-                <source src="assets/audio_frequency.webm">
-            </audio>
-        </td>
-        <td>
-            <audio controls>
-                <source src="">
-            </audio>
-        </td>
-    </tr>
+        <tr id="audio_frequency">
+            <td>
+                /segment/frequency/1000-4000
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/audio_frequency.webm">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="">
+                </audio>
+            </td>
+        </tr>
 
-</table>
+    </table>
 
-</table>
+    </table>
+
+</main>
 </body>
 </html>
